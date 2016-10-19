@@ -48,8 +48,8 @@ public:
 				//Command line argument stuff
 
 				//Get the index parameter
-				unsigned index = CommandLineArguments::Instance()->GetUnsignedCorrespondingToOption("-myintval");
-//				unsigned index = 1;
+			  //	unsigned index = CommandLineArguments::Instance()->GetUnsignedCorrespondingToOption("-myintval");
+			        unsigned index = 1;
 
 				//To be extra careful, we reseed the random number generator
 				RandomNumberGenerator::Instance()->Reseed(100*index);

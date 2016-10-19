@@ -1,1 +1,1 @@
-TestOrganoid/TestOrganoidRingWithTargetRatio.hpp
+TestOrganoid/TestOrganoidRing.hpp
