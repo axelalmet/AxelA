@@ -25,7 +25,6 @@
 #include "VolumeTrackingModifier.hpp"
 #include "TransitCellProliferativeType.hpp"
 #include "PanethCellMutationState.hpp"
-#include "LumenCellMutationState.hpp"
 #include "CellLabel.hpp"
 #include "FixedRegionPlaneBoundaryCondition.hpp"
 #include "FakePetscSetup.hpp" //Forbids tests running in parallel

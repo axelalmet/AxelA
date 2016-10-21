@@ -1,4 +1,4 @@
-/* TestNodeBasedBasementMembraneModel.hpp
+\/* TestNodeBasedBasementMembraneModel.hpp
  *
  * A test for implementing SJD's basement membrane model
  * using an overlapping spheres based model.
@@ -25,7 +25,7 @@
 #include "TransitCellProliferativeType.hpp"
 #include "DifferentiatedCellProliferativeType.hpp"
 #include "WildTypeCellMutationState.hpp"
-#include "UniformlyDistributedCellCycleModel.hpp"
+#include "UniformDistributedCellCycleModel.hpp"
 #include "VoronoiDataWriter.hpp" //Allows us to visualise output in Paraview
 #include "PanethCellMutationState.hpp"
 #include "FakePetscSetup.hpp" //Forbids tests running in parallel (for now)

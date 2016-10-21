@@ -25,7 +25,7 @@
 #include "TransitCellProliferativeType.hpp"
 #include "DifferentiatedCellProliferativeType.hpp"
 #include "WildTypeCellMutationState.hpp"
-#include "UniformlyDistributedCellCycleModel.hpp"
+#include "UniformDistributedCellCycleModel.hpp"
 #include "VoronoiDataWriter.hpp" //Allows us to visualise output in Paraview
 #include "OrganoidRingDataTrackingModifier.hpp"
 #include "PanethCellMutationState.hpp"

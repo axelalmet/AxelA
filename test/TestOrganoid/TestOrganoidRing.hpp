@@ -1,3 +1,4 @@
+
 /*
  * TestOrganoidRing.hpp
  *
@@ -20,7 +21,7 @@
 #include "CellMutationStatesCountWriter.hpp"
 #include "VoronoiDataWriter.hpp" //Allows us to visualise output in Paraview
 #include "DifferentiatedCellProliferativeType.hpp" //Stops cells from proliferating
-#include "UniformlyDistributedCellCycleModel.hpp"
+#include "UniformCellCycleModel.hpp"
 #include "TransitCellProliferativeType.hpp"
 #include "PanethCellMutationState.hpp"
 #include "CellLabel.hpp"
@@ -40,9 +41,9 @@ class TestOrganoidRing : public AbstractCellBasedTestSuite
 public:
 	void TestTissueRing() throw(Exception)
 	{
-		for (double BM = 1.0; BM < 2.0; BM++)
+		for (double BM = 2.0; BM < 3.0; BM++)
 		{
-			for (double TC = 0.0; TC < 1.0; TC++)
+			for (double TC = 1.0; TC < 2.0; TC++)
 			{
 
 				//Command line argument stuff
@@ -54,9 +55,9 @@ public:
 				//To be extra careful, we reseed the random number generator
 				RandomNumberGenerator::Instance()->Reseed(100*index);
 
-				double dt = 0.0005; //Set dt
+				double dt = 0.01; //Set dt
 				double end_time = 1.0; //Set end time
-				double sampling_timestep = end_time/dt; //Set sampling timestep multiple for Visualisations
+				double sampling_timestep = 0.5/dt; //Set sampling timestep multiple for Visualisations
 
 				//Set all the spring stiffness variables
 				double cell_cell_stiffness = 15.0;
@@ -129,7 +130,7 @@ public:
 				for (unsigned i = 0; i<real_indices.size(); i++)
 				{
 					//Set stochastic duration based cell cycle
-					UniformlyDistributedCellCycleModel* p_cycle_model = new UniformlyDistributedCellCycleModel();
+					UniformCellCycleModel* p_cycle_model = new UniformCellCycleModel();
 					p_cycle_model->SetDimension(2);
 					double birth_time = 12.0*RandomNumberGenerator::Instance()->ranf(); //We would like the birth time to be ~U(0,12) and set in the past (this is probably not necessary now)
 					p_cycle_model->SetBirthTime(-birth_time);
@@ -160,8 +161,7 @@ public:
 					if (pow(x-circle_centre[0],2) + pow(y-circle_centre[1],2) <= pow(ring_radius,2))
 					{
 						Node<2>* p_node = cell_population.GetNodeCorrespondingToCell(cell_iter);
-						unsigned node_index = p_node->GetIndex();
-
+						
 						//Iterate over the elements (triangles) containing the nodes
 						for (Node<2>::ContainingElementIterator iter = p_node->ContainingElementsBegin();
 								iter != p_node->ContainingElementsEnd();
@@ -206,8 +206,6 @@ public:
 					if (pow(x-circle_centre[0],2) + pow(y-circle_centre[1],2) <= pow(ring_radius,2))
 					{
 						Node<2>* p_node = cell_population.GetNodeCorrespondingToCell(cell_iter);
-						unsigned node_index = p_node->GetIndex();
-
 						//Only iterate over the initial ring of transit cells
 						if (cell_iter->GetCellProliferativeType()->IsType<DifferentiatedCellProliferativeType>() == false)
 						{

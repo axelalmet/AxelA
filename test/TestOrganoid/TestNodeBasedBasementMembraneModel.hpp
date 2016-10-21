@@ -26,7 +26,7 @@
 #include "TransitCellProliferativeType.hpp"
 #include "DifferentiatedCellProliferativeType.hpp"
 #include "WildTypeCellMutationState.hpp"
-#include "UniformlyDistributedCellCycleModel.hpp"
+#include "UniformCellCycleModel.hpp"
 #include "VoronoiDataWriter.hpp" //Allows us to visualise output in Paraview
 #include "PanethCellMutationState.hpp"
 #include "FakePetscSetup.hpp" //Forbids tests running in parallel (for now)
